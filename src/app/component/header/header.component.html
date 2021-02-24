@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary text-white">
+    <a class="navbar-brand text-white" href="#">
+        <img style="height: 1.5rem;" src="../../../assets/images/new_logo_white.svg" class="img1”"> TMS - Tradinos</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" *ngIf="isLog">
+            <li class="nav-item" [ngClass]="(router.url === '/task-list')?'active':''">
+                <a class="nav-link text-white " href="/task-list">Task List </a>
+            </li>
+            <li class="nav-item " [ngClass]="(router.url === '/add-task')?'active':''">
+                <a class="nav-link text-white " href="/add-task ">Add Task</a>
+            </li>
+
+        </ul>
+        <div class="form-inline my-2 my-lg-0 ">
+            <button *ngIf="isLog" (click)="logout($event)" class="btn text-white bg-info my-2 my-sm-0 " type="submit ">Logout</button>
+        </div>
+    </div>
+</nav>

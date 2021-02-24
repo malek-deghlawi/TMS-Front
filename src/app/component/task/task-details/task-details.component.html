@@ -1,0 +1,38 @@
+<!-- <a class="btn btn-primary mb-3" routerLink="/task-list"> Back</a> -->
+<div class="row mt-5 mb-5">
+    <div class="col-md-6 mx-auto">
+        <div class="card card-header bg-primary text-white mt-1">
+            <h4>Task Detals</h4>
+
+        </div>
+
+        <div class="card card-body bg-light" *ngIf="task !== undefined">
+            <div>Task ID : {{ task.id }}</div>
+            <hr>
+            <div>Task Description : {{ task.description }}</div>
+            <hr>
+            <div>Publisher : <label class="badge badge-secondary" *ngIf="task.publisher !== undefined">{{ task.publisher.name }} | {{ task.publisher.email }}</label></div>
+            <hr>
+            <div>Task Tag : <span class="badge" [ngClass]="(cat.color === 'red')?'badge-danger':(cat.color === 'orange')?'badge-warning':'badge-success'" *ngFor="let cat of task.categories">
+              {{cat.name}}
+              </span></div>
+            <hr>
+            <div>Task End Flag : <input (change)="fieldsChange($event)" type="checkbox" [(ngModel)]="isChecked" value="{{ isChecked }}" />
+            </div>
+            <hr>
+            <div>Task Deadline : {{ task.deadline }}</div>
+        </div>
+
+
+        <div class="row">
+            <div class="col">
+                <app-sub-task-from *ngIf="task !== undefined" [task_id]="task.id"></app-sub-task-from>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <app-sub-task-list *ngIf="task !== undefined" [sub_task]="task.sub_task"></app-sub-task-list>
+            </div>
+        </div>
+    </div>
+</div>

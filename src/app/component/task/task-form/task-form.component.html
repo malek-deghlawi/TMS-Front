@@ -1,0 +1,33 @@
+<div class="row mt-5 mb-5">
+    <div class="col-md-5 mx-auto">
+        <div class="card-header bg-info text-white">
+            <h4>Add New Task</h4>
+        </div>
+        <div class="card card-body">
+            <form (submit)="Add($event)">
+                <div class="form-group ">
+                    <input type="text " [(ngModel)]="description" name="description" id="description" class="form-control " placeholder="Task Description" [ngClass]="{'is-invalid' : dError}">
+                    <div class="invalid-feedback">Task description can't be blank ! </div>
+                </div>
+                <div class="form-group ">
+                    <label for="deadline">Deadline</label>
+                    <input type="date" [(ngModel)]="deadline" name="deadline" id="deadline" class="form-control" [ngClass]="{'is-invalid' : eError}">
+                    <div class="invalid-feedback">The deadline must be set</div>
+                </div>
+                <div class="form-group ">
+                    <label for="categories">Categories</label>
+                    <select2 [multiple]=true (update)="updateCategories($event)" [data]="catData" placeholder="select Categories"></select2>
+                    <div class="invalid text-danger" *ngIf="cError">At least one category must be chosen</div>
+                </div>
+                <div class="form-group ">
+                    <label for="assigen_to">Assign to</label>
+                    <select2 [multiple]=true (update)="updateAssign($event)" [data]="userData" name="ass" id="ass" placeholder="select Users" [ngClass]="{'is-invalid' : aError}"></select2>
+                    <div class="invalid text-danger" *ngIf="aError">At least one user must be chosen</div>
+                </div>
+
+                <button type="submit " class="btn btn-info ">Add</button>
+
+            </form>
+        </div>
+    </div>
+</div>

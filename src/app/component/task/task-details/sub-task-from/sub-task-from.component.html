@@ -1,0 +1,8 @@
+<form (submit)="Add($event)">
+    <div class="form-group">
+        <br>
+        <input type="text" name="title" id="task" class="form-control" placeholder="Enter Sub-Task Title" [(ngModel)]="title" [ngClass]="{'is-invalid' : title==='' && formSubmitted}">
+        <div class="invalid-feedback">Task can't be blank ! </div>
+    </div>
+    <button class="btn alert-primary ">Add Sub-Task</button>
+</form>

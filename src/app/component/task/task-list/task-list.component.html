@@ -1,0 +1,41 @@
+<div class="row mt-5 mb-5">
+    <div class="col-md-8 mx-auto">
+        <div>
+            <a class="float-right btn btn-success mb-3" routerLink="/add-task">Add Task</a>
+        </div>
+        <table datatable class="row-border hover" [dtTrigger]="dtTrigger" class="table table-hover">
+            <thead>
+                <tr class="bg-primary text-white ">
+                    <th style="width:10%">ID</th>
+                    <th style="width:40%">Description</th>
+                    <th style="width:30%">Categories</th>
+                    <th style="width:10%">Ended</th>
+                    <th style="width:10%">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let task of tasks">
+                    <!-- <app-task-item [task]="task"></app-task-item> -->
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.description }}</td>
+                    <td><span class="badge ml-1" [ngClass]="(cat.color === 'red')?'alert-danger':(cat.color === 'orange')?'alert-warning':'alert-success'" *ngFor="let cat of task.categories">
+                {{cat.name}}
+               </span></td>
+                    <td>
+                        <input disabled type="checkbox" [checked]="task.end_falg" />
+                    </td>
+                    <td>
+                        <!-- <button type="button " class=" float-right btn btn-danger ml-3 "><i class="far fa-trash-alt " (click)="onClickD($event) " id="{{ task.id }} "></i></button> -->
+
+                        <button type="button " class=" float-right btn btn-primary ml-3 "><i class="far fa-eye " routerLink="/task/{{ task.id }} "></i></button>
+                    </td>
+                    <!-- <td>{{ task.id }}</td>
+              <td>{{ task.description }}</td>
+              <td>Bar</td> -->
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="row mt-5 mb-5">
+    <div class="col-md-5 mx-auto">
+        <div class="card-header bg-info text-white">
+            <h4>Register</h4>
+        </div>
+        <div class="card card-body">
+            <form (submit)="register($event)">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" required class="form-control" [ngClass]="{'is-invalid' : nameError!==''}">
+                    <div class="invalid-feedback">{{ nameError }}</div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" class="form-control" [ngClass]="{'is-invalid' : mailError!==''}">
+                    <div class="invalid-feedback">{{ mailError }}</div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="form-control" [ngClass]="{'is-invalid' : passwordError!==''}">
+                    <div class="invalid-feedback">{{ passwordError }}</div>
+                </div>
+                <button type="submit" class="btn btn-info mr-3">register</button>
+                <a routerLink="/login">login</a>
+            </form>
+        </div>
+    </div>
+</div>
